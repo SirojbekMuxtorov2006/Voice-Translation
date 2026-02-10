@@ -1,0 +1,332 @@
+/* Reset and Base Styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#root {
+	width: 100%;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family:
+		-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: #0f0c29;
+	color: #ffffff;
+	overflow-x: hidden;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(15, 12, 41, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	border-radius: 10px;
+	border: 2px solid rgba(15, 12, 41, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Firefox Scrollbar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #667eea rgba(15, 12, 41, 0.5);
+}
+
+/* Selection Styles */
+::selection {
+	background: rgba(102, 126, 234, 0.3);
+	color: #ffffff;
+}
+
+::-moz-selection {
+	background: rgba(102, 126, 234, 0.3);
+	color: #ffffff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.8;
+		transform: scale(1.05);
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -1000px 0;
+	}
+	100% {
+		background-position: 1000px 0;
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes ripple {
+	0% {
+		transform: scale(0);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+
+/* Utility Classes */
+.fade-in {
+	animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+	animation: slideUp 0.6s ease-out;
+}
+
+.slide-down {
+	animation: slideDown 0.6s ease-out;
+}
+
+.scale-in {
+	animation: scaleIn 0.4s ease-out;
+}
+
+.glass-effect {
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+}
+
+.gradient-border {
+	position: relative;
+	background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+	border-radius: 16px;
+}
+
+.gradient-border::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 16px;
+	padding: 1px;
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	-webkit-mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+}
+
+/* Focus Styles */
+button:focus-visible,
+a:focus-visible {
+	outline: 2px solid #667eea;
+	outline-offset: 2px;
+}
+
+/* Loading States */
+.skeleton {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0.05) 25%,
+		rgba(255, 255, 255, 0.1) 50%,
+		rgba(255, 255, 255, 0.05) 75%
+	);
+	background-size: 1000px 100%;
+	animation: shimmer 2s infinite;
+	border-radius: 8px;
+}
+
+/* Responsive Typography */
+@media (max-width: 600px) {
+	body {
+		font-size: 14px;
+	}
+}
+
+@media (min-width: 601px) and (max-width: 960px) {
+	body {
+		font-size: 15px;
+	}
+}
+
+@media (min-width: 961px) {
+	body {
+		font-size: 16px;
+	}
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* Print Styles */
+@media print {
+	body {
+		background: white;
+		color: black;
+	}
+
+	.no-print {
+		display: none !important;
+	}
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+	body {
+		background: #000000;
+		color: #ffffff;
+	}
+
+	.glass-effect {
+		background: rgba(255, 255, 255, 0.1);
+		border: 2px solid rgba(255, 255, 255, 0.3);
+	}
+}
+
+/* Dark Mode Support (if needed) */
+@media (prefers-color-scheme: light) {
+	/* Optional: Add light mode overrides if desired */
+}
+
+/* Custom Properties for Theming */
+:root {
+	--color-primary: #667eea;
+	--color-secondary: #764ba2;
+	--color-accent: #f093fb;
+	--color-success: #10b981;
+	--color-error: #ef4444;
+	--color-warning: #f59e0b;
+	--color-info: #3b82f6;
+
+	--gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	--gradient-secondary: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+	--gradient-accent: linear-gradient(135deg, #f093fb 0%, #667eea 100%);
+
+	--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+	--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+	--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+	--radius-sm: 8px;
+	--radius-md: 12px;
+	--radius-lg: 16px;
+	--radius-xl: 24px;
+	--radius-full: 9999px;
+
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 1.5rem;
+	--spacing-xl: 2rem;
+	--spacing-2xl: 3rem;
+}
+
+/* Text Utilities */
+.text-gradient {
+	background: var(--gradient-primary);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.text-glow {
+	text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Interactive Elements */
+.interactive {
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+.interactive:hover {
+	transform: translateY(-2px);
+}
+
+.interactive:active {
+	transform: translateY(0);
+}
